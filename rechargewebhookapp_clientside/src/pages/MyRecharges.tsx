@@ -32,7 +32,7 @@ const MyRecharges = () => {
   return (
     <>
       <Navbar />  
-      <Container sx={{ justifyContent: "center" }} >
+      <Container sx={{ maxWidth:'100vw', maxHeight:'100vh' ,justifyContent: "center" }} >
         <Box component="div" sx={{ display: "flex", justifyContent: "center" }} >
             <Box component="span" >
                 <TableContainer sx={{ maxWidth: "flex", minWidth: "center" }} >
@@ -46,15 +46,13 @@ const MyRecharges = () => {
                         </TableHead>
                         <TableBody>
                             {
-                                recharges.map((recharge:any, index:number) => {
-                                    return (
-                                        <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border:0 } }} >
-                                            <TableCell>{recharge.mobileNo}</TableCell>
-                                            <TableCell>{recharge.amount}</TableCell>
-                                            <TableCell>{recharge.status}</TableCell>
-                                        </TableRow>
-                                    )
-                                })
+                                recharges.map((recharge:any, index:number) => (
+                                    <TableRow key={index} sx={{ '&:last-child td, &:last-child th': { border:0 } }} >
+                                        <TableCell>{recharge.mobileNo}</TableCell>
+                                        <TableCell>{recharge.amount}</TableCell>
+                                        <TableCell>{recharge.status}</TableCell>
+                                    </TableRow>
+                                ))
                             }
                         </TableBody>
                     </Table>

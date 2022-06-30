@@ -9,12 +9,14 @@ const LogoLg: any = styled(Box)(({theme}) => ({
         display: "none",
         [theme.breakpoints.up("sm")]: {
             display: "block",
+            width:"100vw",
         },
     },
 }));
 
 const LogoSm: any = styled("div")(({theme}) => ({
     logoSm: {
+        width:"100vw",
         display: "block",
         [theme.breakpoints.down("sm")]: {
             display: "none",
@@ -32,7 +34,7 @@ const Navbar = () => {
 
   return (
     <AppBar position='sticky'>
-        <Container maxWidth="xl" >
+        <Container maxWidth="lg" >
             <Toolbar disableGutters >
                 <LogoLg>
                     <Typography 
@@ -77,7 +79,7 @@ const Navbar = () => {
                             Recharge
                         </Typography>
                     </Box>
-                    <Box sx={{ mt:'0px' ,ml:40 ,display:{ xs:'block', md:'none', lg:"none" } }} >
+                    <Box sx={{ mt:'0px', ml:40 ,display:{ xs:'block', md:'none', lg:"none" } }} >
                         <Button
                             key='MyRecharges'
                             onClick={handleCloseNavMenu}

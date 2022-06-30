@@ -1,14 +1,18 @@
 import { Grid, TextField, Box, Button } from '@mui/material';
 import axios from 'axios';
 import React, { ChangeEvent, FormEvent, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export type RechargeData = {
-    mobileNo?: string;
-    amount?: number;
+    mobileNo: string;
+    amount: number;
 
 }
 
 const RechargeForm = ({mobileNo, amount} : RechargeData) => {
+
+  const navigate = useNavigate();
+    
   const [formData, setFormData] = useState({
       mobileNo: '',
       amount: amount
@@ -25,7 +29,8 @@ const RechargeForm = ({mobileNo, amount} : RechargeData) => {
         try {
             const res = await axios.post("http://localhost:4500/api/recharge", formData);
             console.log(res.data);
-            return res.data;
+            //res.data;
+            navigate("/myRecharges");
         } catch {
 
         }
