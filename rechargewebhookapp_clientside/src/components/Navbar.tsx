@@ -1,28 +1,8 @@
-import { AppBar, Box, Button, Container, Menu, MenuItem, styled, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, Grid, Stack, Toolbar, Typography } from '@mui/material';
 import CellTowerIcon from '@mui/icons-material/CellTower';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-const LogoLg: any = styled(Box)(({theme}) => ({
-    logoLg: {
-        display: "none",
-        [theme.breakpoints.up("sm")]: {
-            display: "block",
-            width:"100vw",
-        },
-    },
-}));
-
-const LogoSm: any = styled("div")(({theme}) => ({
-    logoSm: {
-        width:"100vw",
-        display: "block",
-        [theme.breakpoints.down("sm")]: {
-            display: "none",
-        },
-    }
-}))
 
 const Navbar = () => {
 
@@ -34,66 +14,74 @@ const Navbar = () => {
 
   return (
     <AppBar position='sticky'>
-        <Container maxWidth="lg" >
+        <Grid maxWidth="xl" >
             <Toolbar disableGutters >
-                <LogoLg>
-                    <Typography 
-                        variant='h6'
-                        component='span' 
-                        sx={{ display: { xs: "none", sm:"block", md:'block', lg:'block' } }}
-                    >
-                        <CellTowerIcon/>Recharge App
-                    </Typography>
-                    <Box sx={{ ml:70 , display:{ xs:'none', sm:'block', md:'block', lg:'block' } }} >
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'none', sm:'block', md:'block', lg:'block'},
-                            }}
-                        >
-                            <MenuItem key='MyRecharges' onClick={handleCloseNavMenu} component={Link} to="/myRecharges" >
-                            <Typography textAlign="center">MyRecharges</Typography>
-                            </MenuItem> 
-                        </Menu>
-                    </Box>    
-                </LogoLg>
-                <LogoSm>
-                    <Box>
+                <Box sx={{ display: { xs: "none", sm:"block", md:'block', lg:'block' } }} >
+                    <Stack direction="row">
                         <Typography 
-                            variant='h5'
+                            variant='h6'
                             component='span' 
-                            sx={{ mt:5 ,display: { xs: "block", sm:"none", md:"none" , lg:"none" } }}
+                            sx={{ ml:2, display: { xs: "none", sm:"block", md:'block', lg:'block' } }}
                         >
-                            Recharge
+                            <CellTowerIcon/>Recharge App
                         </Typography>
-                    </Box>
-                    <Box sx={{ mt:'0px', ml:40 ,display:{ xs:'block', md:'none', lg:"none" } }} >
-                        <Button
-                            key='MyRecharges'
-                            onClick={handleCloseNavMenu}
-                            component={Link} to="/myRecharges"
-                            sx={{ my:2, color:'white', display:'block'  }}
-                        >
-                            MyRecharges
-                        </Button>
-                    </Box>
-                </LogoSm>
+                        <Box sx={{ display:{ xs:'none', sm:'block', md:'block', lg:'block' } }} >
+                            <Box sx={{ display:'flex', flexDirection:'row' }} >
+                                <Button
+                                    key='Home'
+                                    onClick={handleCloseNavMenu}
+                                    component={Link} to="/"
+                                    sx={{ color:'white', display:'block'  }}
+                                >
+                                    Home
+                                </Button>
+                                <Button
+                                    key='MyRecharges'
+                                    onClick={handleCloseNavMenu}
+                                    component={Link} to="/myRecharges"
+                                    sx={{ color:'white', display:'block'  }}
+                                >
+                                    MyRecharges
+                                </Button>
+                            </Box>
+                        </Box> 
+                    </Stack>
+                </Box>
+                <Box sx={{ display:{ xs:'block', sm:'none', md:'none', lg:"none" } }} >
+                    <Stack direction="row" spacing={2} justifyContent="space-between" >
+                            <Typography 
+                                variant='h5'
+                                component='span' 
+                                sx={{ ml:1 ,display: { xs: "block", sm:"none", md:"none" , lg:"none" } }}
+                            >
+                                Recharge
+                            </Typography>
+                        <Box sx={{ display:{ xs:'block', sm:'none', md:'none', lg:"none" } }} >
+                            <Box sx={{ display:'flex', flexDirection:'row' }} >
+                                <Button
+                                    key='Home'
+                                    onClick={handleCloseNavMenu}
+                                    component={Link} to="/"
+                                    sx={{ color:'white', display:'block'  }}
+                                >
+                                    Home
+                                </Button>
+                                <Button
+                                    key='MyRecharges'
+                                    onClick={handleCloseNavMenu}
+                                    component={Link} to="/myRecharges"
+                                    sx={{ color:'white', display:'block'  }}
+                                >
+                                    MyRecharges
+                                </Button>
+                            </Box>
+                        </Box>
+                    </Stack>
+                </Box>
             </Toolbar>
-        </Container>
+        </Grid>
     </AppBar>
   )
 }
 
-export default Navbar
+export default Navbar;
